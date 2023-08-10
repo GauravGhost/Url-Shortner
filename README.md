@@ -15,9 +15,9 @@ The Advanced URL Shortener project is a powerful web service built using Node.js
 ## Tech Stack
 - **Node Js**
 - **Express Js**
-- **mySQL**
-- **Sequelize**
-- **RabbitMQ**
+- **mongoDb**
+- **mongoose**
+- **Redis**
 
 ## API Reference
 
