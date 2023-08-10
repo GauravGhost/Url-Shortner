@@ -34,11 +34,11 @@ class UrlService {
     async redirect(url){
         const id = base62.decode(url).toString();
         const response = await urlRepository.getBySnowflakeId(id);
-        client.set(id, response.originalUrl);
-        client.expire(id, 86400);
         if(!response){
             throw new ApiError(StatusCodes.BAD_REQUEST, "Bad Request");
         }
+        client.set(id, response.originalUrl);
+        client.expire(id, 86400);
         return response.originalUrl;
     }
 }
