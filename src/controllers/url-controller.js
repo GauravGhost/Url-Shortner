@@ -5,17 +5,25 @@ const { ApiError } = require('../utils');
 const AsyncHandler = require('../utils/asyncHandler');
 
 const urlService = new UrlService();
+
 /**
- * @param {bool} req.query.error
+ * @param {url} req.body
+ * @return {shortUrl} 
  */
 
 const create = AsyncHandler(async (req, res) => {
     const response = await urlService.create(req.body.url);
-    console.log(response);
-    successResponse.data = response
+
+    successResponse.data = response.shortenedUrl;
     return res.status(StatusCodes.OK).json(successResponse);
+});
+
+const redirect = AsyncHandler(async (req, res) => {
+    const originalUrl = await urlService.redirect(req.params.url);
+    return res.redirect(originalUrl);
 })
 
 module.exports = {
-    create
+    create,
+    redirect
 }

@@ -22,7 +22,7 @@ const urlSchema = new Schema({
         timestamps: true
     }
 );
-urlSchema.index({ shortenedUrl: 1 });
+urlSchema.index({ snowflakeId: 1 });
 
 const Url = model('Url', urlSchema);
 

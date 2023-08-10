@@ -10,6 +10,6 @@ const router = express.Router();
 
 
 router.get('/info', Validate(InfoValidation.info), InfoController.info);
-router.use('/url', UrlRouter);
+router.use('/', UrlRouter);
 
 module.exports = router;

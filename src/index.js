@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.options("*", cors());
 
-app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 app.use((req, res, next) => {
     next(new ApiError(StatusCodes.NOT_FOUND, "Not found"));

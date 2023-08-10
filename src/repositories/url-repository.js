@@ -17,6 +17,14 @@ class UrlRepository extends CrudRepository{
             throw new ApiError(StatusCodes.INTERNAL_SERVER_ERROR, "Something went wrong while fetching data using url in crud repository");
         }
     }
+    async getBySnowflakeId(id) {
+        try {
+            const result = await this.model.findOne({snowflakeId: id});
+            return result;
+        } catch (error) {
+            throw new ApiError(StatusCodes.INTERNAL_SERVER_ERROR, "Something went wrong while fetching data using url in crud repository");
+        }
+    }
 }
 
 module.exports = UrlRepository;

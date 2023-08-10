@@ -1,8 +1,12 @@
 const base62 = require("base62/lib/ascii");
+const { StatusCodes } = require("http-status-codes");
 
 const {UrlRepository} = require('../repositories');
-const {IdGenerator} = require('../utils')
-const {ServerConfig} = require('../config')
+const {IdGenerator, ApiError} = require('../utils')
+
+const {ServerConfig} = require('../config');
+const client = require('../config/redisdb')
+
 const urlRepository = new UrlRepository();
 
 class UrlService {
@@ -25,6 +29,17 @@ class UrlService {
         });
 
         return response;
+    }
+
+    async redirect(url){
+        const id = base62.decode(url).toString();
+        const response = await urlRepository.getBySnowflakeId(id);
+        client.set(id, response.originalUrl);
+        client.expire(id, 86400);
+        if(!response){
+            throw new ApiError(StatusCodes.BAD_REQUEST, "Bad Request");
+        }
+        return response.originalUrl;
     }
 }
 
