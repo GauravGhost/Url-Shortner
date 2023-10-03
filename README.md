@@ -15,15 +15,16 @@ The Advanced URL Shortener project is a powerful web service built using Node.js
 ## Tech Stack
 - **Node Js**
 - **Express Js**
-- **mySQL**
-- **Sequelize**
-- **RabbitMQ**
+- **mongoDb**
+- **mongoose**
+- **Redis**
+- **AWS EC2**
 
 ## API Reference
 
 #### endpoint
 ```http
-  13.233.15.78:5000/ -> aws link
+  13.233.15.78:4000
 ```
 
 | Parameter | Method   | Body | Description                    |
