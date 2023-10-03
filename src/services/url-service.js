@@ -11,7 +11,6 @@ const urlRepository = new UrlRepository();
 
 class UrlService {
     async create(url){
-
         const isExist = await urlRepository.getByUrl(url);
         if(isExist){
             return isExist;
