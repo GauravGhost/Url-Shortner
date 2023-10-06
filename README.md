@@ -30,7 +30,7 @@ The Advanced URL Shortener project is a powerful web service built using Node.js
 | Parameter | Method   | Body | Description                    |
 | :-------- | :------- |:------- |:-------------------------   |
 | `/` | `POST` |         |Make Url short and return short url  |
-| `/:url` | `GET` |         |redirect to the original Url    |
+| `/:url` | `GET` |         |return original url    |
 
 ## Setup the project
 
