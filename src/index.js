@@ -27,5 +27,6 @@ app.use(ErrorHandler);
 app.listen(ServerConfig.PORT, async () => {
     Logger.info(`Server has started in ${ServerConfig.PORT}`, "root", {})
     await DatabaseConnect();
+    await redisDb.connect();
     Logger.info(`Database Connected`, "root", {})
 })

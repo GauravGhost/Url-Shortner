@@ -20,7 +20,8 @@ const create = AsyncHandler(async (req, res) => {
 
 const redirect = AsyncHandler(async (req, res) => {
     const originalUrl = await urlService.redirect(req.params.url);
-    return res.redirect(originalUrl);
+    successResponse.data = originalUrl;
+    return res.satus(StatusCodes.OK).json(successResponse);
 })
 
 module.exports = {

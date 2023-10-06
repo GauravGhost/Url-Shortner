@@ -9,7 +9,8 @@ const urlCache = AsyncHandler(async (req, res, next) => {
     if (await client.exists(id)) {
         client.expire(id, 86400);
         const originalUrl = await client.get(id);
-        return res.redirect(originalUrl);
+        Response.successResponse.data = originalUrl;
+        return res.status(StatusCodes.OK).json(Response.successResponse);
     }
     next();
 });
