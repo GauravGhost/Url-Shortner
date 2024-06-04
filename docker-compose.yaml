@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    container_name: urlRedis
+    environment:
+      REDIS_HOST: ${REDIS_HOST}
+    restart: unless-stopped
+
+  app:
+    build: .
+    ports:
+      - "${PORT}:4000"
+    environment:
+      NODE_ENV: ${ENV}
+      MONGODB_URL: ${MONGODB_URL}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+volumes:
+  redis-data: 

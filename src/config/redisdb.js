@@ -1,9 +1,10 @@
 const redis = require('redis');
 
-const { REDIS_URL } = require('./server-config')
+const { REDIS_HOST, REDIS_PORT } = require('./server-config')
 
 const client = redis.createClient({
-  url: REDIS_URL,
+  url: `redis://${REDIS_HOST}:${REDIS_PORT}`
+  /*
   retry_strategy: function (options) {
     if (options.error && options.error.code === 'ECONNREFUSED') {
       return new Error('The server refused the connection');
@@ -17,6 +18,7 @@ const client = redis.createClient({
     // reconnect after
     return Math.min(options.attempt * 100, 3000);
   }
+  */
 });
 
 client.on("error", function (err) {
