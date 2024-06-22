@@ -22,10 +22,6 @@ The Advanced URL Shortener project is a powerful web service built using Node.js
 
 ## API Reference
 
-#### endpoint
-```http
-  13.233.15.78:4000
-```
 
 | Parameter | Method   | Body | Description                    |
 | :-------- | :------- |:------- |:-------------------------   |
